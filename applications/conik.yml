@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: conik-backend
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/HANIEUMICT/MANIFEST_REPO.git
+    targetRevision: HEAD
+    path: conik
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
