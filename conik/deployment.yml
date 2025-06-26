@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conik
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: conik
+  template:
+    metadata:
+      labels:
+        app: conik
+    spec:
+      containers:
+        - name: conik-backend
+          image: 285816336668.dkr.ecr.ap-northeast-2.amazonaws.com/conik-ecr:0f19fd60ef756c74acecd96548a1ce4d4c7cd8a4
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 30
+#            periodSeconds: 10
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health
+#              port: 8080
+#            initialDelaySeconds: 60
+#            periodSeconds: 15
