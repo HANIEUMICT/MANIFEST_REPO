@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: conik
+  name: petclinic
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: conik
+      app: petclinic
   template:
     metadata:
       labels:
-        app: conik
+        app: petclinic
     spec:
       containers:
-        - name: conik-backend
+        - name: petclinic
           image: 285816336668.dkr.ecr.ap-northeast-2.amazonaws.com/conik-ecr:0f19fd60ef756c74acecd96548a1ce4d4c7cd8a4
           ports:
             - containerPort: 8080
@@ -24,15 +24,15 @@ spec:
             limits:
               cpu: 500m
               memory: 1Gi
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            initialDelaySeconds: 30
-#            periodSeconds: 10
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health
-#              port: 8080
-#            initialDelaySeconds: 60
-#            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 15
