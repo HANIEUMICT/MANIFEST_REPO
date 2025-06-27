@@ -3,7 +3,9 @@ kind: Deployment
 metadata:
   name: redis
   namespace: default
+
 spec:
+  revisionHistoryLimit: 2
   replicas: 1
   selector:
     matchLabels:
