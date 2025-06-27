@@ -9,6 +9,8 @@ spec:
     repoURL: https://github.com/HANIEUMICT/MANIFEST_REPO.git
     targetRevision: HEAD
     path: conik
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -16,3 +18,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
