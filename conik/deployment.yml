@@ -17,7 +17,7 @@ spec:
         - name: conik
           ports:
             - containerPort: 8080
-          image: 285816336668.dkr.ecr.ap-northeast-2.amazonaws.com/conik-ecr:9f86f84a31169ea9372698b5b3176456f11f728d
+          image: 285816336668.dkr.ecr.ap-northeast-2.amazonaws.com/conik-ecr:45bb73fbfc5688b6490dcbcf210f14d2eba794de
           resources:
             requests:
               cpu: 250m
